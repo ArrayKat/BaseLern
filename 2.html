@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание сайтов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #3700b3;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        h2 {
+            color: #6200ea;
+        }
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .accordion:hover {
+            background-color: #ddd;
+        }
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .homework {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 5px solid #6200ea;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Создание сайтов</h1>
+    </header>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="#html">HTML</a>
+        <a href="#css">CSS</a>
+        <a href="#js">JavaScript</a>
+    </nav>
+    <div class="container" id="content">
+        <!-- Контент будет добавлен с помощью JavaScript -->
+    </div>
+
+    <script>
+        // Функция для создания блока с контентом
+        function createTopicBlock(title, id, description, presentationUrl, homeworkTasks) {
+            const block = document.createElement("div");
+
+            // Аккордеон (кнопка)
+            const accordionButton = document.createElement("button");
+            accordionButton.className = "accordion";
+            accordionButton.textContent = title;
+            block.appendChild(accordionButton);
+
+            // Панель с контентом
+            const panel = document.createElement("div");
+            panel.className = "panel";
+
+            // Заголовок темы
+            const topicTitle = document.createElement("h2");
+            topicTitle.id = id;
+            topicTitle.textContent = title;
+            panel.appendChild(topicTitle);
+
+            // Описание темы
+            const topicDescription = document.createElement("p");
+            topicDescription.textContent = description;
+            panel.appendChild(topicDescription);
+
+            // Презентация (iframe)
+            const iframe = document.createElement("iframe");
+            iframe.src = presentationUrl;
+            iframe.width = "100%";
+            iframe.height = "400px";
+            iframe.allowFullscreen = true;
+            iframe.style.border = "none";
+            panel.appendChild(iframe);
+
+            // Домашнее задание
+            const homework = document.createElement("div");
+            homework.className = "homework";
+
+            const homeworkTitle = document.createElement("h3");
+            homeworkTitle.textContent = "Домашнее задание";
+            homework.appendChild(homeworkTitle);
+
+            const taskList = document.createElement("ol");
+            homeworkTasks.forEach(task => {
+                const taskItem = document.createElement("li");
+                taskItem.textContent = task;
+                taskList.appendChild(taskItem);
+            });
+            homework.appendChild(taskList);
+
+            panel.appendChild(homework);
+            block.appendChild(panel);
+
+            return block;
+        }
+
+        // Данные для тем
+        const topics = [
+            {
+                title: "HTML",
+                id: "html",
+                description: "HTML (HyperText Markup Language) — это язык разметки для создания веб-страниц.",
+                presentationUrl: "https://docs.google.com/presentation/d/1vmWnznbe9NnEg2hEMUMTogsmNt8Vot1_qWYsuxvQ4u4/preview",
+                homeworkTasks: [
+                    "Создайте HTML-страницу с заголовком и абзацем.",
+                    "Добавьте изображение и ссылку на другую страницу.",
+                    "Используйте теги <header>, <main> и <footer>."
+                ]
+            },
+            {
+                title: "CSS",
+                id: "css",
+                description: "CSS (Cascading Style Sheets) — это язык стилей для оформления веб-страниц.",
+                presentationUrl: "https://docs.google.com/presentation/d/1vmWnznbe9NnEg2hEMUMTogsmNt8Vot1_qWYsuxvQ4u4/preview",
+                homeworkTasks: [
+                    "Создайте файл стилей и подключите его к HTML-странице.",
+                    "Измените цвет фона и шрифта на странице.",
+                    "Добавьте анимацию для кнопки."
+                ]
+            },
+            {
+                title: "fhhfhfhfhfhf",
+                id: "Название?",
+                description: "CSS (Cascading Style Sheets) — это язык стилей для оформления веб-страниц.",
+                presentationUrl: "https://docs.google.com/presentation/d/1vmWnznbe9NnEg2hEMUMTogsmNt8Vot1_qWYsuxvQ4u4/preview",
+                homeworkTasks: [
+                    "Создайте файл стилей и подключите его к HTML-странице.",
+                    "Измените цвет фона и шрифта на странице.",
+                    "Добавьте анимацию для кнопки."
+                ]
+            },
+            {
+                title: "JavaScript",
+                id: "js",
+                description: "JavaScript — это язык программирования для создания интерактивных веб-страниц.",
+                presentationUrl: "https://docs.google.com/presentation/d/1vmWnznbe9NnEg2hEMUMTogsmNt8Vot1_qWYsuxvQ4u4/preview",
+                homeworkTasks: [
+                    "Создайте кнопку, которая меняет текст на странице.",
+                    "Добавьте обработчик события onclick.",
+                    "Используйте console.log для вывода сообщений."
+                ]
+            }
+        ];
+
+        // Добавление блоков на страницу
+        const contentContainer = document.getElementById("content");
+        topics.forEach(topic => {
+            const topicBlock = createTopicBlock(
+                topic.title,
+                topic.id,
+                topic.description,
+                topic.presentationUrl,
+                topic.homeworkTasks
+            );
+            contentContainer.appendChild(topicBlock);
+        });
+
+        // JavaScript для аккордеона
+        const accordions = document.querySelectorAll(".accordion");
+        accordions.forEach(accordion => {
+            accordion.addEventListener("click", function() {
+                this.classList.toggle("active");
+
+                const panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
